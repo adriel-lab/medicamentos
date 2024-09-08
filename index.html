@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Medicamentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .search-filters div {
+            position: relative;
+            flex: 1;
+        }
+
+        .search-filters input[type="text"],
+        .search-filters select {
+            appearance: none;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .search-filters i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #3498db;
+        }
+
+        #resultado {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .medicamento {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .medicamento:hover {
+            transform: scale(1.02);
+        }
+
+        .medicamento img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .medicamento h2 {
+            margin: 0;
+            font-size: 18px;
+            color: #007BFF;
+        }
+
+        .medicamento p {
+            margin: 10px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .error {
+            color: red;
+            text-align: center;
+            margin: 20px;
+            font-size: 16px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100vw;
+            margin-top: 50px;
+
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>Pesquisar Medicamentos</h1>
+    <div class="container">
+        <div class="search-filters">
+            <div>
+                <input type="text" id="pesquisa" placeholder="Pesquisar..." oninput="searchMedicamento()">
+                <i class="fas fa-search"></i>
+            </div>
+            <div>
+                <select id="filtro-nome-generico" onchange="searchMedicamento()">
+                    <option value="">Nome Genérico</option>
+                </select>
+                <i class="fas fa-pills"></i>
+            </div>
+            <div>
+                <select id="filtro-nome-comercial" onchange="searchMedicamento()">
+                    <option value="">Nome Comercial</option>
+                </select>
+                <i class="fas fa-capsules"></i>
+            </div>
+            <div>
+                <select id="filtro-principio-ativo" onchange="searchMedicamento()">
+                    <option value="">Princípio Ativo</option>
+                </select>
+                <i class="fas fa-flask"></i>
+            </div>
+        </div>
+        <div id="resultado"></div>
+        <div id="erro" class="error"></div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sistema de Medicamentos. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="medicamentos.js"></script>
+    <script src="pesquisa.js"></script>
+</body>
+
+</html>
